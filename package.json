@@ -1,7 +1,7 @@
 {
   "name": "auth-asgmt",
   "version": "1.0.0",
-  "description": "",
+  "description": "This repository contains the code for an authentication-related assignment using Node.js. It demonstrates the implementation of user authentication features such as password hashing and JWT token generation.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,6 +11,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^5.1.0"
-  }
+    "bcrypt": "^5.1.1",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdoh-alkhateeb/node-auth-asgmt.git"
+  },
+  "bugs": {
+    "url": "https://github.com/abdoh-alkhateeb/node-auth-asgmt/issues"
+  },
+  "homepage": "https://github.com/abdoh-alkhateeb/node-auth-asgmt#readme"
 }

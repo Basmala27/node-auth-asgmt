@@ -24,6 +24,9 @@ function authenticate(req, res, next) {
   try {
     // TODO: Verify JWT
 
+    const payload = verifyJWT(token, JWT_SECRET);
+    req.user = payload;
+
     next();
   } catch {
     res.status(403).json({ message: 'Invalid token' });
@@ -50,6 +53,7 @@ app.post('/register', async (req, res) => {
 
   // TODO: Hash password
 
+  const hashedPassword = await hashPassword(password);
   users.push({ username, password: hashedPassword, role });
 
   res.status(201).json({ message: 'User registered' });
@@ -61,7 +65,19 @@ app.post('/login', async (req, res) => {
 
   // TODO: Verify password
 
+  if (!user) {
+    return res.status(401).json({ message: 'Invalid credentials' });
+  }
+
+  const isValid = await verifyPassword(password, user.password);
+
+  if (!isValid) {
+    return res.status(401).json({ message: 'Invalid credentials' });
+  }
+
+
   // TODO: Sign JWT
+  const token = signJWT({ username: user.username, role: user.role }, JWT_SECRET);
 
   res.json({ token });
 });
