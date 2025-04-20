@@ -131,3 +131,5 @@ app.delete('/books/:id', authenticate, authorizeAdmin, (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+
+console.log("Test from Basmala");
